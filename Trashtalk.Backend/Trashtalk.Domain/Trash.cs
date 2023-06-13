@@ -8,6 +8,6 @@ namespace Trashtalk.Domain
         public string Name { get; set; }
         public string Barcode { get; set; }
         public TrashType Type { get; set; }
-
+        public Guid TypeId { get; set; }
     }
 }

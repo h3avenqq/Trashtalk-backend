@@ -9,6 +9,7 @@ namespace Trashtalk.Domain
         public string Name { get; set; }
         public string Algorithm { get; set; }
         public TrashBin TrashBin { get; set; }
+        public Guid TrashBinId { get; set; }
         public IList<Trash> Trash { get; set; }
 
     }

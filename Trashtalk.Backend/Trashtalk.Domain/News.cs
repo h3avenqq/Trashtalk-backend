@@ -9,6 +9,8 @@ namespace Trashtalk.Domain
         public string BriefDescription { get; set; }
         public string Description { get; set; }
         public DateTime PublishDate { get; set; }
+        public DateTime? EditDate { get; set; }
         public ReceptionPoint Author { get; set; }
+        public Guid AuthorId { get; set; }
     }
 }
