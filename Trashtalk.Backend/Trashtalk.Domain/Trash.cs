@@ -7,6 +7,7 @@ namespace Trashtalk.Domain
         public Guid Id { get; set; }
         public string Name { get; set; }
         public string Barcode { get; set; }
+        public float Weight { get; set; }
         public TrashType Type { get; set; }
         public Guid TypeId { get; set; }
     }

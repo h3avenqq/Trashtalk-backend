@@ -12,7 +12,7 @@ using Trashtalk.Domain;
 
 namespace Trashtalk.Application.CQRS.Commands.DeleteTrash
 {
-    public class DeleteTrashCommandHandler : IRequestHandler<DeleteTrashCommand>
+    public class DeleteTrashCommandHandler : IRequestHandler<DeleteTrashCommand, Unit>
     {
         private readonly ITrashTalkDbContext _dbContext;
 
@@ -21,7 +21,7 @@ namespace Trashtalk.Application.CQRS.Commands.DeleteTrash
             _dbContext = dbContext;
         }
 
-        public async Task Handle(DeleteTrashCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(DeleteTrashCommand request, CancellationToken cancellationToken)
         {
             var entity
                 = await _dbContext.Trash.FindAsync(new object[] {request.Id}, cancellationToken);
@@ -31,6 +31,8 @@ namespace Trashtalk.Application.CQRS.Commands.DeleteTrash
 
             _dbContext.Trash.Remove(entity);
             await _dbContext.SaveChangesAsync(cancellationToken);
+
+            return Unit.Value;
         }
     }
 }
