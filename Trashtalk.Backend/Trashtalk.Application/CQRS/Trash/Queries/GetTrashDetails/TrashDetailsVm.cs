@@ -5,7 +5,7 @@ using Trashtalk.Domain;
 
 namespace Trashtalk.Application.CQRS.Trash.Queries.GetTrashDetails
 {
-    public class TrashDetailsVm : IMapWith<Trash>
+    public class TrashDetailsVm : IMapWith<Domain.Trash>
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
@@ -15,7 +15,7 @@ namespace Trashtalk.Application.CQRS.Trash.Queries.GetTrashDetails
 
         public void Mapping(Profile profile)
         {
-            profile.CreateMap<Trash, TrashDetailsVm>()
+            profile.CreateMap<Domain.Trash, TrashDetailsVm>()
                 .ForMember(x => x.Id, opt => opt.MapFrom(x => x.Id))
                 .ForMember(x => x.Name, opt => opt.MapFrom(x => x.Name))
                 .ForMember(x => x.Barcode, opt => opt.MapFrom(x => x.Barcode))

@@ -1,11 +1,10 @@
 ﻿using AutoMapper;
 using System;
 using Trashtalk.Application.Common.Mappings;
-using Trashtalk.Domain;
 
 namespace Trashtalk.Application.CQRS.Trash.Queries.GetTrashList
 {
-    public class TrashLookupDto : IMapWith<Trash>
+    public class TrashLookupDto : IMapWith<Domain.Trash>
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
@@ -15,7 +14,7 @@ namespace Trashtalk.Application.CQRS.Trash.Queries.GetTrashList
 
         public void Mapping(Profile profile)
         {
-            profile.CreateMap<Trash, TrashLookupDto>()
+            profile.CreateMap<Domain.Trash, TrashLookupDto>()
                 .ForMember(x => x.Id, opt => opt.MapFrom(x => x.Id))
                 .ForMember(x => x.Name, opt => opt.MapFrom(x => x.Name))
                 .ForMember(x => x.Barcode, opt => opt.MapFrom(x => x.Barcode))
