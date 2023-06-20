@@ -6,7 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Trashtalk.Application.Interfaces;
 
-namespace Trashtalk.Application.CQRS.Queries.GetTrashList
+namespace Trashtalk.Application.CQRS.Trash.Queries.GetTrashList
 {
     public class GetTrashListQueryHandler : IRequestHandler<GetTrashListQuery, TrashListVm>
     {
@@ -25,7 +25,7 @@ namespace Trashtalk.Application.CQRS.Queries.GetTrashList
                 await _dbContext.Trash.ProjectTo<TrashLookupDto>(_mapper.ConfigurationProvider)
                     .ToListAsync(cancellationToken);
 
-            return new TrashListVm { Trash = entities};
+            return new TrashListVm { Trash = entities };
         }
     }
 }

@@ -7,7 +7,7 @@ using Trashtalk.Application.Common.Exceptions;
 using Trashtalk.Application.Interfaces;
 using Trashtalk.Domain;
 
-namespace Trashtalk.Application.CQRS.Queries.GetTrashDetails
+namespace Trashtalk.Application.CQRS.Trash.Queries.GetTrashDetails
 {
     public class GetTrashDetailsQueryHandler 
         : IRequestHandler<GetTrashDetailsQuery, TrashDetailsVm>

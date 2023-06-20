@@ -10,7 +10,7 @@ using Trashtalk.Application.Common.Exceptions;
 using Trashtalk.Application.Interfaces;
 using Trashtalk.Domain;
 
-namespace Trashtalk.Application.CQRS.Commands.DeleteTrash
+namespace Trashtalk.Application.CQRS.Trash.Commands.DeleteTrash
 {
     public class DeleteTrashCommandHandler : IRequestHandler<DeleteTrashCommand, Unit>
     {

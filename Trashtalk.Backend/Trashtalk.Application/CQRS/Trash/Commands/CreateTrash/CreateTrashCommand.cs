@@ -1,7 +1,7 @@
 ﻿using System;
 using MediatR;
 
-namespace Trashtalk.Application.CQRS.Commands.CreateTrash
+namespace Trashtalk.Application.CQRS.Trash.Commands.CreateTrash
 {
     public class CreateTrashCommand : IRequest<Guid>
     {

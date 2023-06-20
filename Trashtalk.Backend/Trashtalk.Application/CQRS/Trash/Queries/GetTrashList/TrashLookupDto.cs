@@ -3,7 +3,7 @@ using System;
 using Trashtalk.Application.Common.Mappings;
 using Trashtalk.Domain;
 
-namespace Trashtalk.Application.CQRS.Queries.GetTrashList
+namespace Trashtalk.Application.CQRS.Trash.Queries.GetTrashList
 {
     public class TrashLookupDto : IMapWith<Trash>
     {

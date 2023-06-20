@@ -7,7 +7,7 @@ using Trashtalk.Application.Common.Exceptions;
 using Trashtalk.Application.Interfaces;
 using Trashtalk.Domain;
 
-namespace Trashtalk.Application.CQRS.Commands.UpdateTrash
+namespace Trashtalk.Application.CQRS.Trash.Commands.UpdateTrash
 {
     public class UpdateTrashCommandHandler : IRequestHandler<UpdateTrashCommand, Unit>
     {

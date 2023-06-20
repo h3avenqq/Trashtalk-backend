@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using System;
 
-namespace Trashtalk.Application.CQRS.Commands.DeleteTrash
+namespace Trashtalk.Application.CQRS.Trash.Commands.DeleteTrash
 {
     public class DeleteTrashCommand : IRequest<Unit>
     {

@@ -5,7 +5,7 @@ using MediatR;
 using Trashtalk.Application.Interfaces;
 using Trashtalk.Domain;
 
-namespace Trashtalk.Application.CQRS.Commands.CreateTrash
+namespace Trashtalk.Application.CQRS.Trash.Commands.CreateTrash
 {
     public class CreateTrashCommandHandler : IRequestHandler<CreateTrashCommand, Guid>
     {
