@@ -19,7 +19,6 @@ namespace Trashtalk.Persistence.EntityTypeConfigurations
                 .WithOne(x => x.Type)
                 .HasForeignKey(x => x.TypeId)
                 .HasPrincipalKey(x => x.Id);
-
         }
     }
 }

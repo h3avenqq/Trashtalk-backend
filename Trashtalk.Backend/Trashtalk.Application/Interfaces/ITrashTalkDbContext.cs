@@ -12,6 +12,7 @@ namespace Trashtalk.Application.Interfaces
         DbSet<Trash> Trash { get; set; }
         DbSet<TrashType> TrashTypes { get; set; }
         DbSet<TrashBin> TrashBins { get; set; }
+        DbSet<UserTrash> UserTrash { get; set; }
 
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
     }

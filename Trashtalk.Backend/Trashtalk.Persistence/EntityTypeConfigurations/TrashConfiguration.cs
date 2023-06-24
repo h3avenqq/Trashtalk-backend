@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
 using Trashtalk.Domain;
 
 namespace Trashtalk.Persistence.EntityTypeConfigurations
@@ -15,6 +14,10 @@ namespace Trashtalk.Persistence.EntityTypeConfigurations
             builder.HasOne(x => x.Type)
                 .WithMany(x => x.Trash)
                 .HasForeignKey(x => x.TypeId)
+                .HasPrincipalKey(x => x.Id);
+            builder.HasMany(x => x.UserTrash)
+                .WithOne(x => x.Trash)
+                .HasForeignKey(x => x.TrashId)
                 .HasPrincipalKey(x => x.Id);
         }
     }
