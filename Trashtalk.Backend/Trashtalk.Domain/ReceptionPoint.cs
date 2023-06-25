@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
+using NetTopologySuite.Geometries;
 
 namespace Trashtalk.Domain
 {

@@ -18,7 +18,7 @@ namespace Trashtalk.Application.CQRS.Trash.Commands.CreateTrash
 
         async Task<Guid> IRequestHandler<CreateTrashCommand, Guid>.Handle(CreateTrashCommand request, CancellationToken cancellationToken)
         {
-            var trash = new Trash
+            var trash = new Domain.Trash
             {
                 Id = Guid.NewGuid(),
                 Name = request.Name,

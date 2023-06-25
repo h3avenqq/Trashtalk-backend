@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
 using System;
 using Trashtalk.Application.Common.Mappings;
-using Trashtalk.Domain;
+using Trashtalk.Application.CQRS.TrashBins.Commands.UpdateTrashBin;
 
-namespace Trashtalk.Application.CQRS.TrashBins.Queries.GetTrashBinList
+namespace Trashtalk.WebAPI.Models
 {
-    public class TrashBinLookupDto : IMapWith<TrashBin>
+    public class UpdateTrashBinDto : IMapWith<UpdateTrashBinCommand>
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
@@ -13,7 +13,7 @@ namespace Trashtalk.Application.CQRS.TrashBins.Queries.GetTrashBinList
 
         public void Mapping(Profile profile)
         {
-            profile.CreateMap<TrashBin, TrashBinLookupDto>()
+            profile.CreateMap<UpdateTrashBinDto, UpdateTrashBinCommand>()
                 .ForMember(x => x.Id, opt => opt.MapFrom(x => x.Id))
                 .ForMember(x => x.Name, opt => opt.MapFrom(x => x.Name))
                 .ForMember(x => x.Color, opt => opt.MapFrom(x => x.Color));

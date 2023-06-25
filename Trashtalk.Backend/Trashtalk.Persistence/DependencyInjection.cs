@@ -13,7 +13,8 @@ namespace Trashtalk.Persistence
             var connection = configuration["DbConnection"];
             services.AddDbContext<TrashTalkDbContext>(opt =>
             {
-                opt.UseNpgsql(connection);
+                opt.UseNpgsql(connection,
+                    x=>x.UseNetTopologySuite());
             });
 
             services.AddScoped<ITrashTalkDbContext>(provider =>

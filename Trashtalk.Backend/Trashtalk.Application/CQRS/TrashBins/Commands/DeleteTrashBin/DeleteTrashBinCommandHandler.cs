@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.EntityFrameworkCore;
 using System.Threading;
 using System.Threading.Tasks;
 using Trashtalk.Application.Common.Exceptions;
@@ -19,7 +20,7 @@ namespace Trashtalk.Application.CQRS.TrashBins.Commands.DeleteTrashBin
         public async Task<Unit> Handle(DeleteTrashBinCommand request, CancellationToken cancellationToken)
         {
             var entity =
-                await _dbContext.TrashBins.FindAsync(new[] { request.Id }, cancellationToken);
+                await _dbContext.TrashBins.FirstOrDefaultAsync(x => x.Id == request.Id, cancellationToken);
 
             if (entity == null)
                 throw new NotFoundException(nameof(TrashBin), request.Id);

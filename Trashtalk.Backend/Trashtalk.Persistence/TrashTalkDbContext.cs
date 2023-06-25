@@ -19,6 +19,8 @@ namespace Trashtalk.Persistence
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.HasPostgresExtension("postgis");
+
             modelBuilder.ApplyConfiguration(new TrashConfiguration());
             modelBuilder.ApplyConfiguration(new TrashTypeConfiguration());
             modelBuilder.ApplyConfiguration(new TrashBinsConfiguration());

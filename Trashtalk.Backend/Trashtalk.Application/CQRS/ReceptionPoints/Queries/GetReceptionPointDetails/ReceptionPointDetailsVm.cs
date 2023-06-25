@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using System;
-using System.Drawing;
+using NetTopologySuite.Geometries;
 using Trashtalk.Application.Common.Mappings;
 using Trashtalk.Domain;
 

@@ -1,6 +1,6 @@
 ﻿using MediatR;
 using System;
-using System.Drawing;
+using NetTopologySuite.Geometries;
 
 namespace Trashtalk.Application.CQRS.ReceptionPoints.Commands.CreateReceptionPoint
 {

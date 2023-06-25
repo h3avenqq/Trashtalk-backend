@@ -1,8 +1,7 @@
 ﻿using AutoMapper;
 using System;
-using System.Drawing;
+using NetTopologySuite.Geometries;
 using Trashtalk.Application.Common.Mappings;
-using Trashtalk.Application.CQRS.ReceptionPoints.Queries.GetReceptionPointDetails;
 using Trashtalk.Domain;
 
 namespace Trashtalk.Application.CQRS.ReceptionPoints.Queries.GetReceptionPointList
