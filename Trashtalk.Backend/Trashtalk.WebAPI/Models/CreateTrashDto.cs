@@ -9,6 +9,7 @@ namespace Trashtalk.WebAPI.Models
     {
         public string Name { get; set; }
         public string Barcode { get; set; }
+        public int Weight { get; set; }
         public Guid TypeId { get; set; }
 
         public void Mapping(Profile profile)
@@ -16,6 +17,7 @@ namespace Trashtalk.WebAPI.Models
             profile.CreateMap<CreateTrashDto, CreateTrashCommand>()
                 .ForMember(x => x.Name, opt => opt.MapFrom(x => x.Name))
                 .ForMember(x => x.Barcode, opt => opt.MapFrom(x => x.Barcode))
+                .ForMember(x=>x.Weight, opt=>opt.MapFrom(x=>x.Weight))
                 .ForMember(x => x.TypeId, opt => opt.MapFrom(x => x.TypeId));
         }
     }

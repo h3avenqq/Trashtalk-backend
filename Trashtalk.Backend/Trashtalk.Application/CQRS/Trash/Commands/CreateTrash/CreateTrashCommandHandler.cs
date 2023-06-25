@@ -3,7 +3,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
 using Trashtalk.Application.Interfaces;
-using Trashtalk.Domain;
 
 namespace Trashtalk.Application.CQRS.Trash.Commands.CreateTrash
 {
@@ -23,6 +22,7 @@ namespace Trashtalk.Application.CQRS.Trash.Commands.CreateTrash
                 Id = Guid.NewGuid(),
                 Name = request.Name,
                 Barcode = request.Barcode,
+                Weight = request.Weight,
                 TypeId = request.TypeId
             };
 

@@ -8,5 +8,7 @@ namespace Trashtalk.Application.CQRS.Trash.Commands.CreateTrash
         public string Name { get; set; }
         public string Barcode { get; set; }
         public Guid TypeId { get; set; }
+        public float Weight { get; set; }
+
     }
 }
