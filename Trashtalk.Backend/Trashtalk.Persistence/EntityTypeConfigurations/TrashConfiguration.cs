@@ -11,6 +11,7 @@ namespace Trashtalk.Persistence.EntityTypeConfigurations
             builder.HasKey(x => x.Id);
             builder.HasIndex(x => x.Id).IsUnique();
             builder.Property(x => x.Name).HasMaxLength(50);
+            builder.HasIndex(x => x.Barcode).IsUnique();
             builder.HasOne(x => x.Type)
                 .WithMany(x => x.Trash)
                 .HasForeignKey(x => x.TypeId)
