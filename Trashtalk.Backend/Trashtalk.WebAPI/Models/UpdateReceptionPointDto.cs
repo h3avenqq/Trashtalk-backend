@@ -12,7 +12,7 @@ namespace Trashtalk.WebAPI.Models
         public string Name { get; set; }
         public string Description { get; set; }
         public string Address { get; set; }
-        public Point Coordinates { get; set; }
+        public GeoPoint Coordinates { get; set; }
 
         public void Mapping(Profile profile)
         {

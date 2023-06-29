@@ -23,6 +23,7 @@ namespace Trashtalk.Application.CQRS.ReceptionPoints.Commands.CreateReceptionPoi
                 Id = Guid.NewGuid(),
                 Name = request.Name,
                 Description = request.Description,
+                Address = request.Address,
                 Coordinates = request.Coordinates
             };
 
