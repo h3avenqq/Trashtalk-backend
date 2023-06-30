@@ -1,4 +1,4 @@
-﻿namespace Trashtalk.WebAPI.Models
+﻿namespace Trashtalk.Domain
 {
     public class GeoPoint
     {

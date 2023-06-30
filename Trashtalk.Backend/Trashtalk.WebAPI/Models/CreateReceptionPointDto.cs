@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Trashtalk.Application.Common.Mappings;
 using Trashtalk.Application.CQRS.ReceptionPoints.Commands.CreateReceptionPoint;
+using Trashtalk.Domain;
 
 namespace Trashtalk.WebAPI.Models
 {
@@ -18,8 +19,7 @@ namespace Trashtalk.WebAPI.Models
                 .ForMember(x => x.Description, opt => opt.MapFrom(x => x.Description))
                 .ForMember(x => x.Address, opt => opt.MapFrom(x => x.Address))
                 .ForMember(x => x.Coordinates, 
-                    opt => opt.MapFrom(x => 
-                        new NetTopologySuite.Geometries.Point(x.Coordinates.X, x.Coordinates.Y) { SRID = 4326 }));
+                    opt => opt.MapFrom(x => x.Coordinates));
         }
     }
 }

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Trashtalk.Application.Common.Exceptions;
 using Trashtalk.Application.Interfaces;
 using Trashtalk.Domain;
+using NetTopologySuite.Geometries;
 
 namespace Trashtalk.Application.CQRS.ReceptionPoints.Commands.UpdateReceptionPoint
 {
@@ -25,7 +26,11 @@ namespace Trashtalk.Application.CQRS.ReceptionPoints.Commands.UpdateReceptionPoi
             if (entity == null)
                 throw new NotFoundException(nameof(ReceptionPoint), request.Id);
 
-            _dbContext.ReceptionPoints.Update(entity);
+            entity.Name = request.Name;
+            entity.Description = request.Description;
+            entity.Address = request.Address;
+            entity.Coordinates = new Point(request.Coordinates.X, request.Coordinates.Y);
+
             await _dbContext.SaveChangesAsync(cancellationToken);
 
             return Unit.Value;

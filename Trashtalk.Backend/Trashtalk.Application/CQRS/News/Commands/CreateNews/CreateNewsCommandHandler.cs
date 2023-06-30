@@ -23,7 +23,7 @@ namespace Trashtalk.Application.CQRS.News.Commands.CreateNews
                 Title = request.Title,
                 BriefDescription = request.BriefDescription,
                 Description = request.Description,
-                PublishDate = DateTime.Now,
+                PublishDate = DateTime.UtcNow,
                 EditDate = null,
                 AuthorId = request.AuthorId
             };

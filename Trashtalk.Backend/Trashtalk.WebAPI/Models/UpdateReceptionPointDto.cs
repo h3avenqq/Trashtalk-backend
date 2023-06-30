@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using NetTopologySuite.Geometries;
 using System;
 using Trashtalk.Application.Common.Mappings;
 using Trashtalk.Application.CQRS.ReceptionPoints.Commands.UpdateReceptionPoint;
+using Trashtalk.Domain;
 
 namespace Trashtalk.WebAPI.Models
 {

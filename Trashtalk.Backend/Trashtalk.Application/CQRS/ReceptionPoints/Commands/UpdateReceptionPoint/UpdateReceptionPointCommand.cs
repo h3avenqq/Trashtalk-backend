@@ -1,6 +1,6 @@
 ﻿using MediatR;
-using NetTopologySuite.Geometries;
 using System;
+using Trashtalk.Domain;
 
 namespace Trashtalk.Application.CQRS.ReceptionPoints.Commands.UpdateReceptionPoint
 {
@@ -10,6 +10,6 @@ namespace Trashtalk.Application.CQRS.ReceptionPoints.Commands.UpdateReceptionPoi
         public string Name { get; set; }
         public string Description { get; set; }
         public string Address { get; set; }
-        public Point Coordinates { get; set; }
+        public GeoPoint Coordinates { get; set; }
     }
 }

@@ -4,6 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Trashtalk.Application.Interfaces;
 using Trashtalk.Domain;
+using NetTopologySuite.Geometries;
 
 namespace Trashtalk.Application.CQRS.ReceptionPoints.Commands.CreateReceptionPoint
 {
@@ -24,7 +25,7 @@ namespace Trashtalk.Application.CQRS.ReceptionPoints.Commands.CreateReceptionPoi
                 Name = request.Name,
                 Description = request.Description,
                 Address = request.Address,
-                Coordinates = request.Coordinates
+                Coordinates = new Point(request.Coordinates.X, request.Coordinates.Y),
             };
 
             await _dbContext.ReceptionPoints.AddAsync(entity,cancellationToken);

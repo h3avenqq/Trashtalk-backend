@@ -29,7 +29,7 @@ namespace Trashtalk.Application.CQRS.News.Commands.UpdateNews
             entity.Title = request.Title;
             entity.BriefDescription = request.BriefDescription;
             entity.Description = request.Description;
-            entity.EditDate = DateTime.Now;
+            entity.EditDate = DateTime.UtcNow;
             entity.AuthorId = request.AuthorId;
 
             await _dbContext.SaveChangesAsync(cancellationToken);

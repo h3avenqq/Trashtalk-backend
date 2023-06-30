@@ -12,7 +12,7 @@ namespace Trashtalk.Application.CQRS.ReceptionPoints.Queries.GetReceptionPointDe
         public string Name { get; set; }
         public string Description { get; set; }
         public string Address { get; set; }
-        public Point Coordinates { get; set; }
+        public GeoPoint Coordinates { get; set; }
 
         public void Mapping(Profile profile)
         {
@@ -21,7 +21,9 @@ namespace Trashtalk.Application.CQRS.ReceptionPoints.Queries.GetReceptionPointDe
                 .ForMember(x => x.Name, opt => opt.MapFrom(x => x.Name))
                 .ForMember(x => x.Description, opt => opt.MapFrom(x => x.Description))
                 .ForMember(x => x.Address, opt => opt.MapFrom(x => x.Address))
-                .ForMember(x => x.Coordinates, opt => opt.MapFrom(x => x.Coordinates));
+                .ForMember(x => x.Coordinates, opt => opt.MapFrom(x 
+                    => new GeoPoint() { X = x.Coordinates.X, Y = x.Coordinates.Y }));
         }
     }
+
 }
