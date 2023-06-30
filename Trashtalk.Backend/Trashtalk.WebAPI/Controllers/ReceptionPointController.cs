@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
@@ -11,6 +12,7 @@ using Trashtalk.WebAPI.Models;
 
 namespace Trashtalk.WebAPI.Controllers
 {
+    [Produces("application/json")]
     [Route("api/[controller]")]
     public class ReceptionPointController : BaseController
     {
@@ -21,7 +23,15 @@ namespace Trashtalk.WebAPI.Controllers
             _mapper = mapper;
         }
 
+        /// <summary>
+        /// Gets the list of reception points
+        /// </summary>
+        /// <returns>Returns ReceptionPointListVm</returns>
+        /// <response code="200">Success</response>
+        /// <response code="401">If the user is unauthorized</response>
         [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task<ActionResult<ReceptionPointListVm>> GetAll()
         {
             var query = new GetReceptionPointListQuery();
@@ -31,6 +41,15 @@ namespace Trashtalk.WebAPI.Controllers
             return Ok(vm);
         }
 
+        /// <summary>
+        /// Gets the reception point by id
+        /// </summary>
+        /// <param name="id">News id (guid)</param>
+        /// <returns>Returns ReceptionPointDetailsVm</returns>
+        /// <response code="200">Success</response>
+        /// <response code="401">If the user is unauthorized</response>
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [HttpGet("{id}")]
         public async Task<ActionResult<ReceptionPointDetailsVm>> Get(Guid id)
         {
@@ -44,6 +63,17 @@ namespace Trashtalk.WebAPI.Controllers
             return Ok(vm);
         }
 
+
+        /// <summary>
+        /// Creates the reception point
+        /// </summary>
+        /// <param name="createReceptionPointDto">CreateReceptionPointDto object</param>
+        /// <returns>Returns id (guid)</returns>
+        /// <response code="201">Success</response>
+        /// <response code="401">If the user is unauthorized</response>
+        [HttpPost]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [HttpPost]
         public async Task<ActionResult<Guid>> Create([FromBody] CreateReceptionPointDto createReceptionPointDto)
         {
@@ -54,6 +84,16 @@ namespace Trashtalk.WebAPI.Controllers
             return Ok(receptionPointId);
         }
 
+        /// <summary>
+        /// Updates the reception point
+        /// </summary>
+        /// <param name="updateReceptionPointDto">UpdateReceptionPointDto object</param>
+        /// <returns>Returns id (guid)</returns>
+        /// <response code="201">Success</response>
+        /// <response code="401">If the user is unauthorized</response>
+        [HttpPut]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [HttpPut]
         public async Task<ActionResult> Update([FromBody] UpdateReceptionPointDto updateReceptionPointDto)
         {
@@ -64,6 +104,16 @@ namespace Trashtalk.WebAPI.Controllers
             return NoContent();
         }
 
+        /// <summary>
+        /// Deletes the reception point by id
+        /// </summary>
+        /// <param name="id">Id of the reception point (guid)</param>
+        /// <returns>Returns NoContent</returns>
+        /// <response code="204">Success</response>
+        /// <response code="401">If the user is unauthorized</response>
+        [HttpDelete]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [HttpDelete("{id}")]
         public async Task<ActionResult> Delete(Guid id)
         {

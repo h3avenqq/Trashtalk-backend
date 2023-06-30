@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
@@ -11,6 +12,7 @@ using Trashtalk.WebAPI.Models;
 
 namespace Trashtalk.WebAPI.Controllers
 {
+    [Produces("application/json")]
     [Route("api/[controller]")]
     public class TrashTypeController : BaseController
     {
@@ -21,7 +23,15 @@ namespace Trashtalk.WebAPI.Controllers
             _mapper = mapper;
         }
 
+        /// <summary>
+        /// Gets the list of trash types
+        /// </summary>
+        /// <returns>Returns TrashTypeListVm</returns>
+        /// <response code="200">Success</response>
+        /// <response code="401">If the user is unauthorized</response>
         [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task<ActionResult<TrashTypeListVm>> GetAll()
         {
             var query = new GetTrashTypeListQuery();
@@ -31,7 +41,16 @@ namespace Trashtalk.WebAPI.Controllers
             return Ok(vm);
         }
 
+        /// <summary>
+        /// Gets the trash type by id
+        /// </summary>
+        /// <param name="id">Trash type id (guid)</param>
+        /// <returns>Returns TrashTypeDetailsVm</returns>
+        /// <response code="200">Success</response>
+        /// <response code="401">If the user is unauthorized</response>
         [HttpGet("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task<ActionResult<TrashTypeDetailsVm>> Get(Guid id)
         {
             var query = new GetTrashTypeDetailsQuery()
@@ -43,8 +62,16 @@ namespace Trashtalk.WebAPI.Controllers
 
             return Ok(vm);
         }
-
+        /// <summary>
+        /// Creates the trash type
+        /// </summary>
+        /// <param name="createTrashTypeDto">CreateTrashTypeDto object</param>
+        /// <returns>Returns id (guid)</returns>
+        /// <response code="201">Success</response>
+        /// <response code="401">If the user is unauthorized</response>
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task<ActionResult<Guid>> Create([FromBody] CreateTrashTypeDto createTrashTypeDto)
         {
             var command = _mapper.Map<CreateTrashTypeCommand>(createTrashTypeDto);
@@ -54,7 +81,16 @@ namespace Trashtalk.WebAPI.Controllers
             return Ok(trashTypeId);
         }
 
+        /// <summary>
+        /// Updates the trash type
+        /// </summary>
+        /// <param name="updateTrashTypeDto">UpdateTrashTypeDto object</param>
+        /// <returns>Returns id (guid)</returns>
+        /// <response code="201">Success</response>
+        /// <response code="401">If the user is unauthorized</response>
         [HttpPut]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task<ActionResult> Update([FromBody] UpdateTrashTypeDto updateTrashTypeDto)
         {
             var command = _mapper.Map<UpdateTrashTypeCommand>(updateTrashTypeDto);
@@ -64,7 +100,16 @@ namespace Trashtalk.WebAPI.Controllers
             return NoContent();
         }
 
+        /// <summary>
+        /// Deletes the trash type by id
+        /// </summary>
+        /// <param name="id">Id of the trash type (guid)</param>
+        /// <returns>Returns NoContent</returns>
+        /// <response code="204">Success</response>
+        /// <response code="401">If the user is unauthorized</response>
         [HttpDelete("{id}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task<ActionResult> Delete(Guid id)
         {
             var command = new DeleteTrashTypeCommand()
