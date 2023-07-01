@@ -10,8 +10,8 @@ namespace Trashtalk.Persistence.EntityTypeConfigurations
         {
             builder.HasKey(x => x.Id);
             builder.HasIndex(x => x.Id).IsUnique();
-            builder.Property(x => x.Name).HasMaxLength(50);
-            builder.Property(x=>x.Color).HasMaxLength(7);
+            builder.Property(x => x.Name).HasMaxLength(50).IsRequired();
+            builder.Property(x=>x.Color).HasMaxLength(7).IsRequired();
             builder.HasMany(x=>x.TrashTypes)
                 .WithOne(x=>x.TrashBin)
                 .HasForeignKey(x=>x.TrashBinId)

@@ -10,9 +10,10 @@ namespace Trashtalk.Persistence.EntityTypeConfigurations
         {
             builder.HasKey(x => x.Id);
             builder.HasIndex(x => x.Id).IsUnique();
-            builder.Property(x => x.Name).HasMaxLength(50);
-            builder.Property(x => x.Address).HasMaxLength(128);
-            builder.Property(x => x.Coordinates);
+            builder.Property(x => x.Name).HasMaxLength(50).IsRequired();
+            builder.Property(x => x.Description).IsRequired();
+            builder.Property(x => x.Address).HasMaxLength(128).IsRequired();
+            builder.Property(x => x.Coordinates).IsRequired();
             builder.HasMany(x=>x.News)
                 .WithOne(x=>x.Author)
                 .HasForeignKey(x=>x.AuthorId)
