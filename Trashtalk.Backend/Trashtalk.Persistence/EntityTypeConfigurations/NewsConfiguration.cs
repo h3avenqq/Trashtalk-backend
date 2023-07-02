@@ -10,7 +10,7 @@ namespace Trashtalk.Persistence.EntityTypeConfigurations
         {
             builder.HasKey(x => x.Id);
             builder.HasIndex(x => x.Id).IsUnique();
-            builder.Property(x => x.Title).HasMaxLength(25).IsRequired();
+            builder.Property(x => x.Title).HasMaxLength(128).IsRequired();
             builder.Property(x => x.BriefDescription).HasMaxLength(250).IsRequired();
             builder.Property(x => x.Description).IsRequired();
             builder.Property(x => x.PublishDate).IsRequired();
