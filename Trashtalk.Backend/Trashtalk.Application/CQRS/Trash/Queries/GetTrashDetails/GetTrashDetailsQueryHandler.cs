@@ -5,7 +5,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using Trashtalk.Application.Common.Exceptions;
 using Trashtalk.Application.Interfaces;
-using Trashtalk.Domain;
 
 namespace Trashtalk.Application.CQRS.Trash.Queries.GetTrashDetails
 {
@@ -24,10 +23,10 @@ namespace Trashtalk.Application.CQRS.Trash.Queries.GetTrashDetails
         public async Task<TrashDetailsVm> Handle(GetTrashDetailsQuery request, CancellationToken cancellationToken)
         {
             var entity =
-                await _dbContext.Trash.FirstOrDefaultAsync(x => x.Id == request.Id, cancellationToken);
+                await _dbContext.Trash.FirstOrDefaultAsync(x => x.Barcode == request.Barcode, cancellationToken);
 
             if (entity == null)
-                throw new NotFoundException(nameof(Trash), request.Id);
+                throw new NotFoundException(nameof(Trash), request.Barcode);
 
             return _mapper.Map<TrashDetailsVm>(entity);
         }

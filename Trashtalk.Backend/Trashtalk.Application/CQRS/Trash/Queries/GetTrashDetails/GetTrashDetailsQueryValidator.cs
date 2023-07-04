@@ -1,5 +1,4 @@
 ﻿using FluentValidation;
-using System;
 
 namespace Trashtalk.Application.CQRS.Trash.Queries.GetTrashDetails
 {
@@ -7,7 +6,7 @@ namespace Trashtalk.Application.CQRS.Trash.Queries.GetTrashDetails
     {
         public GetTrashDetailsQueryValidator()
         {
-            RuleFor(x => x.Id).NotEqual(Guid.Empty);
+            RuleFor(x => x.Barcode).NotEmpty().MaximumLength(256);
         }
     }
 }

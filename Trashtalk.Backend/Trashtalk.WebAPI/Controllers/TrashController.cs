@@ -46,20 +46,20 @@ namespace Trashtalk.WebAPI.Controllers
         }
 
         /// <summary>
-        /// Gets the trash by id
+        /// Gets the trash by barcode
         /// </summary>
-        /// <param name="id">Trash id (guid)</param>
+        /// <param name="id">Trash barcode (string)</param>
         /// <returns>Returns TrashDetailsVm</returns>
         /// <response code="200">Success</response>
         /// <response code="401">If the user is unauthorized</response>
-        [HttpGet("{id}")]
+        [HttpGet("{barcode}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-        public async Task<ActionResult<TrashDetailsVm>> Get(Guid id)
+        public async Task<ActionResult<TrashDetailsVm>> Get(string barcode)
         {
             var query = new GetTrashDetailsQuery()
             {
-                Id = id
+                Barcode = barcode
             };
 
             var vm = await Mediatr.Send(query);
