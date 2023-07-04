@@ -11,6 +11,7 @@ using Trashtalk.Application;
 using Trashtalk.Application.Common.Mappings;
 using Trashtalk.Application.Interfaces;
 using Trashtalk.Persistence;
+using Trashtalk.WebAPI.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -72,6 +73,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseCustomExceptionHandler();
 app.UseRouting();
 app.UseHttpsRedirection();
 app.UseCors("AllowAll");
