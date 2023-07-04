@@ -12,6 +12,7 @@ namespace Trashtalk.Persistence.EntityTypeConfigurations
             builder.HasIndex(x => x.Id).IsUnique();
             builder.Property(x => x.Name).HasMaxLength(50).IsRequired();
             builder.HasIndex(x => x.Barcode).IsUnique();
+            builder.Property(x => x.Barcode).HasMaxLength(258);
             builder.Property(x => x.Weight).IsRequired();
             builder.Property(x=>x.TypeId).IsRequired();
             builder.HasOne(x => x.Type)
