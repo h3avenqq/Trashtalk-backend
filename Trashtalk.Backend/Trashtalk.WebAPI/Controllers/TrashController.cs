@@ -45,7 +45,7 @@ namespace Trashtalk.WebAPI.Controllers
         /// <summary>
         /// Gets the trash by barcode
         /// </summary>
-        /// <param name="id">Trash barcode (string)</param>
+        /// <param name="barcode">Trash barcode (string)</param>
         /// <returns>Returns TrashDetailsVm</returns>
         /// <response code="200">Success</response>
         /// <response code="401">If the user is unauthorized</response>
