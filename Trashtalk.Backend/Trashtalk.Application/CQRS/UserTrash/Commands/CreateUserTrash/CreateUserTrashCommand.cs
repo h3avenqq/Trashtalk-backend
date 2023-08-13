@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using System;
+using Trashtalk.Domain;
 
 namespace Trashtalk.Application.CQRS.UserTrash.Commands.CreateUserTrash
 {
@@ -7,9 +8,6 @@ namespace Trashtalk.Application.CQRS.UserTrash.Commands.CreateUserTrash
     {
         public Guid TrashId { get; set; }
         public Guid UserId { get; set; }
-        public string Country { get; set; }
-        public string Region { get; set; }
-        public string City { get; set; }
-        public string District { get; set; }
+        public GeoPoint Coordinates { get; set; }
     }
 }

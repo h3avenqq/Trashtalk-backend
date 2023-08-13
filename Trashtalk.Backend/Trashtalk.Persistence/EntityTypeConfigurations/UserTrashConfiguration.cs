@@ -16,10 +16,7 @@ namespace Trashtalk.Persistence.EntityTypeConfigurations
                 .WithMany(x => x.UserTrash)
                 .HasForeignKey(x => x.TrashId)
                 .HasPrincipalKey(x => x.Id);
-            builder.Property(x => x.Country).HasMaxLength(50).IsRequired();
-            builder.Property(x=>x.Region).HasMaxLength(50).IsRequired();
-            builder.Property(x=>x.City).HasMaxLength(50).IsRequired();
-            builder.Property(x => x.District).HasMaxLength(50).IsRequired();
+            builder.Property(x => x.Coordinates).IsRequired();
             builder.Property(x => x.Time).IsRequired();
         }
     }

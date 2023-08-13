@@ -1,0 +1,39 @@
+version: "3.4"
+
+services:
+    webapi:
+        restart:
+          always
+        build:
+          context: .
+          dockerfile: Dockerfile
+        ports:
+          - "8080:80"
+
+
+    postgre:
+        container_name: db
+        build:
+          context: .
+          dockerfile: Dockerfile-db
+        restart: always
+        environment:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: Xz&F37mCVMz9
+          POSTGRES_DB: TrashTalkDb
+        ports:
+          - "5432:5432"
+        volumes:
+          - ./db:/docker-entrypoint-initdb.d/
+          - postgre_volume:/var/lib/postgresql/data
+
+    proxy:
+        restart:
+          always
+        image: nginx:latest
+        volumes:
+          - ./nginx.conf:/etc/nginx/nginx.conf
+        ports:
+          - 80:80
+volumes:
+  postgre_volume:

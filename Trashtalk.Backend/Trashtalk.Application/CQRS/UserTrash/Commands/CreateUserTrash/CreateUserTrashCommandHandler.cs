@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using NetTopologySuite.Geometries;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
@@ -22,10 +23,7 @@ namespace Trashtalk.Application.CQRS.UserTrash.Commands.CreateUserTrash
                 Id = Guid.NewGuid(),
                 TrashId = request.TrashId,
                 UserId = request.UserId,
-                Country = request.Country,
-                Region = request.Region,
-                City = request.City,
-                District = request.District,
+                Coordinates = new Point(request.Coordinates.X, request.Coordinates.Y),
                 Time = DateTime.Now
             };
 

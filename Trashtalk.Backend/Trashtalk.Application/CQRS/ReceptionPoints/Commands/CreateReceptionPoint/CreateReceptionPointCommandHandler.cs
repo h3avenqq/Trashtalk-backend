@@ -25,7 +25,7 @@ namespace Trashtalk.Application.CQRS.ReceptionPoints.Commands.CreateReceptionPoi
                 Name = request.Name,
                 Description = request.Description,
                 Address = request.Address,
-                Coordinates = new Point(request.Coordinates.X, request.Coordinates.Y),
+                Coordinates = new Point(request.Coordinates.X, request.Coordinates.Y)
             };
 
             await _dbContext.ReceptionPoints.AddAsync(entity,cancellationToken);

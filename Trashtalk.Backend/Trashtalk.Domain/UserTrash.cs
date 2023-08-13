@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NetTopologySuite.Geometries;
+using System;
 
 namespace Trashtalk.Domain
 {
@@ -8,10 +9,7 @@ namespace Trashtalk.Domain
         public Trash Trash { get; set; }
         public Guid TrashId { get; set; }
         public Guid UserId { get; set; }
-        public string Country { get; set; }
-        public string Region { get; set; }
-        public string City { get; set; }
-        public string District { get; set; }
+        public Point Coordinates { get; set; }
         public DateTime Time { get; set; }
     }
 }
