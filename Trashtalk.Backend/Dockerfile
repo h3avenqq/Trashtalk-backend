@@ -8,15 +8,15 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 COPY ["Trashtalk.WebAPI/Trashtalk.WebAPI.csproj", "Trashtalk.WebAPI/"]
-RUN dotnet restore "WebAPI/WebAPI.csproj"
+RUN dotnet restore "Trashtalk.WebAPI/Trashtalk.WebAPI.csproj"
 COPY . .
 WORKDIR "/src/WebAPI"
-RUN dotnet build "WebAPI.csproj" -c Release -o /app/build
+RUN dotnet build "Trashtalk.WebAPI.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "WebAPI.csproj" -c Release -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "Trashtalk.WebAPI.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "WebAPI.dll"]
+ENTRYPOINT ["dotnet", "Trashtalk.WebAPI.dll"]
